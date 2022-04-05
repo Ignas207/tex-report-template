@@ -1,15 +1,15 @@
 \documentclass{article}
-\usepackage{Times}
+\usepackage{times}
 \usepackage{amsmath} % Advanced math typesetting
 \usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
 %\usepackage[ngerman]{babel} % Change hyphenation rules
-\usepackage{hyperref} % Add a link to your document
+\usepackage[colorlinks, urlcolor=blue, linkcolor=black]{hyperref} % Add a link to your document
 \usepackage{graphicx} % Add pictures to your document
 \usepackage{listings} % Source code formatting and highlighting
+\graphicspath{{./resources/}}
 \begin{document}
 \author{Ignas Brazauskas}
 \title{Lab 1 report}
-\date{2022-03-30}
 \maketitle
 \newpage
 
@@ -23,6 +23,38 @@
 
 \section{Experiment procedure}
 %Text here
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c c c}
+        \hline
+        Rated voltage & $U_N$ & 480 $V$ \\
+        \hline
+        Rated current & $I_N$ & 270 $A$\\
+        \hline
+        Rated speed & $n_N$ & 3140 $r/min$\\
+        \hline
+        Rated torque & $T_n$ & 369 $Nm$\\
+        \hline
+        Armature resistance & $R_a$ & 0,045 $\Omega$\\
+        \hline
+        Armature inductance & $L_a$ & 4,5 $mH$\\
+        \hline
+        Flux constant & $k_f$ & 0,35 Vs\\
+        \hline
+        Total moment of inertia & $J$ & 0,35 $kgm^2$\\
+        \hline
+    \end{tabular}
+    \caption{Rating and parameters of the DC motor}
+    \label{motor paremeters}
+\end{table}
+
+\begin{figure}[h!]
+    %\includegraphics[width=\linewidth]{dc motor with voltage limiter.png}
+    \caption{DC motor simulation with 480V/0,1s voltage limiter}
+    \label{dcmotor:with-v-limit}
+\end{figure}
+
 \newpage
 
 \section{Experimental results}
