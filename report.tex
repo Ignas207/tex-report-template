@@ -1,0 +1,36 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{depend}
+
+\begin{document}
+\input{title.tex}
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents{}
+\thispagestyle{empty}
+\newpage
+
+\pagenumbering{arabic}
+% Introduction
+\input{introduction/intro.tex}
+\newpage
+
+% Experimental part
+\input{experiments/experiments.tex}
+\newpage
+
+% Experiment results
+\input{results/exp_results.tex}
+\newpage
+
+% Conclusions
+\input{conclusions/conclusion.tex}
+\newpage
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{References}
+\printbibliography[title={References}]
+
+
+\end{document}
