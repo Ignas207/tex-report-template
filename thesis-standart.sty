@@ -1,5 +1,5 @@
 \ProvidesPackage{depend}
-\usepackage{times}
+% \usepackage{times}
 \usepackage{amsmath} % Advanced math typesetting
 \usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
 %\usepackage[ngerman]{babel} % Change hyphenation rules
@@ -7,29 +7,90 @@
 \usepackage{graphicx} % Add pictures to your document
 \usepackage{listings} % Source code formatting and highlighting
 \usepackage{multirow}
+% \usepackage{bookmark}
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage{amssymb}
+\usepackage{sourcecodepro}
 \usepackage{pdfpages}
+\usepackage{minted}
 \usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{svg}
+\usepackage{setspace}
+\usepackage{geometry}
 \usepackage{rotating}
-\usepackage{titlesec}
+\usepackage[compact]{titlesec}
 \usepackage[tablegrid]{vhistory}
 \usepackage{url}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{pdflscape}
 \usepackage[T1]{fontenc}
 \usepackage{float}
-\usepackage{titlesec, blindtext, color}
+\usepackage{lmodern}
+\usepackage{anyfontsize}
+% \usepackage{fontspec}
+% \setmainfont[Ligatures=TeX]{Verdana}
+\usepackage[nofligs]{verdana}
+% \setmainfont{verdana}
+\usepackage{titling}             % Uncomment both to   
+% \setlength{\droptitle}{-10cm}     % change title position 
+% \renewcommand{\abovechapterskip}{\vspace*{10pt}}
+% \usepackage{titlesec}
+% \titleformat{\chapter}{}{}{0em}{\bf\LARGE}
+\usepackage{etoolbox}
+\fontfamily{vna}\selectfont
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{blindtext, color}
 % \usepackage[paper=A4, portrait,pagesize]{typearea}
+
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
 
 % \usepackage{pst-node, pst-plot, auto-pst-pdf}
 % \usepackage{tikz}
+\setstretch{1.25}
+\geometry{
+    a4paper,
+    total={210mm,297mm},
+    left=30mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm
+}
 
 \newcommand{\hsp}{\hspace{20pt}}
 \definecolor{gray75}{gray}{0.75}
-\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+% \ttl@assign\@tempskipa#3\relax\beforetitleunit\vspace*{\@tempskipa}% NEW
+% \titleformat{\chapter}
+%     [display]
+%     {\fontsize{14pt}{10pt}\bfseries}
+%     {\thechapter{.} \hsp\FontSize{14}\bfseries}
+%     {}
+%     {}
+
+\titleformat{\chapter}
+    [display]
+    {\fontsize{14pt}{-16.8pt}\bfseries}
+    {\thechapter{.}}{-9pt}
+    {\hsp\fontsize{14pt}{16.8pt}}
+
+    
+
+% \titleformat{\chapter}
+%     [display]
+%     {\FontSize{14}\bfseries}
+%     {\thechapter{.}}{0pt}
+%     {\hsp\FontSize{14}\bfseries}
+
+% \titleformat{\chapter}
+%     [display]
+%     {\fontsize{14pt}{10pt}\selectfont\bfseries\centering}
+%     {\large\chaptertitlename\ \thechapter}
+%     {.1in}
+%     {}
+\titlespacing*{\chapter}{0pt}{*0}{12pt}
 
 % Code higlight in lslisting, IMPORTANT: add 'escapechar=\%' to the properties to use!
 % And then add the command like this to the line you want to highlight: %\Hilight%
@@ -38,26 +99,36 @@
 \newcommand{\Hilight}{\makebox[0pt][l]{\HilightColour\rule[-4pt]{\linewidth}{14pt}}}
 \newcommand{\HilightStop}{\makebox[0pt][l]{\color{white}\rule[-4pt]{\linewidth}{14pt}}}
 
-
-
+% Font sizes
+\newcommand{\fontMultiplier}{1.2pt}
+\newcommand{\FontSize}[1]{\fontsize{#1pt}{#1\fontMultiplier}\selectfont}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{LightGray}{gray}{0.9}
 
 % \renewcommand\bibname{References}
 
 \usepackage[
 backend=biber,
-style=numeric,
+style=ieee,
 sorting=ynt
 ]{biblatex}
-\addbibresource{refferences.bib}
+\addbibresource{../refferences.bib}
 % \addbibresource{./chapter1/chap1-ref.bib}
 % \addbibresource{./ideas-chapter/ideas-ref.bib}
 
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\newcommand{\mintedOptions}{frame=lines,
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=LightGray,
+fontsize=\footnotesize\ttfamily,
+linenos}
 
 % Embeded comments
 \newcommand{\inlineR}[1]{\todo[inline, color=red!40]{#1}}
@@ -79,7 +150,7 @@ sorting=ynt
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{backcolour},   
     commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
+    keywordstyle=\color{blue},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codepurple},
     basicstyle=\ttfamily\footnotesize,
@@ -93,7 +164,8 @@ sorting=ynt
     showstringspaces=false,
     showtabs=false,                  
     tabsize=2,
-    language=c
+    language=c,
+    % basicstyle=\ttfamily
 }
 
 \lstset{style=mystyle}

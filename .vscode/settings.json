@@ -1,0 +1,28 @@
+{
+    "grammarly.selectors": [
+        {
+            "language": "latex",
+            "scheme": "file"
+        }
+    ],
+    "latex-workshop.latex.outDir": "build",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-enable-write18",
+                "-extra-mem-top=10000000",
+                "-shell-escape",              // <---- added this line
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%",
+
+            ],
+            "env": {}
+        }
+    ]
+}
