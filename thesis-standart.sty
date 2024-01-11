@@ -13,7 +13,7 @@
 \usepackage{amssymb}
 \usepackage{sourcecodepro}
 \usepackage{pdfpages}
-\usepackage{minted}
+\usepackage[outputdir=build]{minted}
 \usepackage{colortbl}
 \usepackage{tikz}
 \usepackage{caption}
@@ -31,6 +31,7 @@
 \usepackage{float}
 \usepackage{lmodern}
 \usepackage{anyfontsize}
+\usepackage{cleveref}
 % \usepackage{fontspec}
 % \setmainfont[Ligatures=TeX]{Verdana}
 \usepackage[nofligs]{verdana}
@@ -47,6 +48,9 @@
 % \usepackage[paper=A4, portrait,pagesize]{typearea}
 
 \renewcommand{\contentsname}{TABLE OF CONTENTS}
+
+\providecommand*{\listingautorefname}{Listing}
+\providecommand*{\listingname}{Listing}
 
 % \usepackage{pst-node, pst-plot, auto-pst-pdf}
 % \usepackage{tikz}
@@ -73,10 +77,10 @@
 \titleformat{\chapter}
     [display]
     {\fontsize{14pt}{-16.8pt}\bfseries}
-    {\thechapter{.}}{-9pt}
+    {\thechapter{.}}{-10pt}
     {\hsp\fontsize{14pt}{16.8pt}}
 
-    
+
 
 % \titleformat{\chapter}
 %     [display]
@@ -122,13 +126,17 @@ sorting=ynt
 
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 
-\newcommand{\mintedOptions}{frame=lines,
-frame=lines,
-framesep=2mm,
-baselinestretch=1.2,
-bgcolor=LightGray,
-fontsize=\footnotesize\ttfamily,
-linenos}
+\setminted[cpp]{
+    frame=single,
+    % framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize\ttfamily,
+    linenos,
+    breaklines,
+    fontencoding=T1
+}
+
+\usemintedstyle{manni}
 
 % Embeded comments
 \newcommand{\inlineR}[1]{\todo[inline, color=red!40]{#1}}

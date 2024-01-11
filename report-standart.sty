@@ -22,6 +22,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{float}
 \usepackage{titlesec, blindtext, color}
+\usepackage[outputdir=build]{minted}
+\usepackage{cleveref}
 % \usepackage[paper=A4, portrait,pagesize]{typearea}
 
 % \usepackage{pst-node, pst-plot, auto-pst-pdf}
@@ -38,7 +40,8 @@
 \newcommand{\Hilight}{\makebox[0pt][l]{\HilightColour\rule[-4pt]{\linewidth}{14pt}}}
 \newcommand{\HilightStop}{\makebox[0pt][l]{\color{white}\rule[-4pt]{\linewidth}{14pt}}}
 
-
+\providecommand*{\listingautorefname}{Listing}
+\providecommand*{\listingname}{Listing}
 
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -99,6 +102,18 @@ sorting=ynt
 \lstset{style=mystyle}
 
 \lstset{style=mystyle}
+
+\setminted[cpp]{
+    frame=single,
+    % framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize\ttfamily,
+    linenos,
+    breaklines,
+    fontencoding=T1
+}
+
+\usemintedstyle{manni}
 
 \graphicspath{{./pictures/}}
 \svgpath{./pictures}
