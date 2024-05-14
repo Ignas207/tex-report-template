@@ -1,4 +1,4 @@
-\ProvidesPackage{depend}
+\ProvidesPackage{thesis-standart}
 % \usepackage{times}
 \usepackage{amsmath} % Advanced math typesetting
 \usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
@@ -120,7 +120,7 @@ backend=biber,
 style=ieee,
 sorting=ynt
 ]{biblatex}
-\addbibresource{../refferences.bib}
+\addbibresource{refferences.bib}
 % \addbibresource{./chapter1/chap1-ref.bib}
 % \addbibresource{./ideas-chapter/ideas-ref.bib}
 
@@ -129,8 +129,18 @@ sorting=ynt
 \setminted[cpp]{
     frame=single,
     % framesep=2mm,
-    baselinestretch=1.2,
+    baselinestretch=1.25,
     fontsize=\footnotesize\ttfamily,
+    linenos,
+    breaklines,
+    fontencoding=T1
+}
+
+\setminted[py]{
+    frame=single,
+    % framesep=2mm,
+    baselinestretch=1.2,
+    % fontsize=5,
     linenos,
     breaklines,
     fontencoding=T1
