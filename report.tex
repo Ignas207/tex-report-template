@@ -4,6 +4,8 @@
 \usepackage{report-vgtu}
 \usepackage{newtxtext,newtxmath}
 
+% center the toc heading
+
 \begin{document}
 % \input{title.tex}
 \newcommand{\city}{Vilnius}
@@ -13,15 +15,16 @@
 % \newcommand{\studentCode}{Student code}
 \newcommand{\Supervisor}{Supervisor}
 
+\pagenumbering{arabic}
 \input{report-title.tex}
-\thispagestyle{empty}
+% \thispagestyle{empty}
+% \pagenumbering{arabic}
 \newpage
 
 \tableofcontents{}
-\thispagestyle{empty}
+% \thispagestyle{empty}
 \newpage
 
-\pagenumbering{arabic}
 % Introduction
 \input{introduction/intro.tex}
 \newpage
@@ -40,8 +43,8 @@
 
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{chapter}{Šaltiniai}
-\printbibliography[title={Šaltiniai}]
+\addcontentsline{toc}{chapter}{LITERATŪROS SĄRAŠAS}
+\printbibliography[title={LITERATŪROS SĄRAŠAS}]
 
 
 \end{document}

@@ -29,6 +29,8 @@
 \usepackage{newfloat}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{pdflscape}
+% \usepackage{tocloft}
+\usepackage{titletoc}
 % \usepackage{mathptmx}
 % \usepackage[T1]{fontenc}
 \usepackage{float}
@@ -55,7 +57,14 @@
 \usepackage{blindtext, color}
 % \usepackage[paper=A4, portrait,pagesize]{typearea}
 
-\renewcommand{\contentsname}{TABLE OF CONTENTS}
+% \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% \renewcommand{\contentsname}{\centering TURINYS}
+\renewcommand{\contentsname}{\hfill \bfseries \FontSize{14} TURINYS \hfill}
+
+\dottedcontents{chapter}[0em]{. }{0.97em}{1pc}
+\dottedcontents{section}[2em]{}{1.94em}{1pc}
+\dottedcontents{subsection}[4em]{\it}{2.9em}{1pc}
 
 \providecommand*{\listingautorefname}{Listing}
 \providecommand*{\listingname}{Listing}
@@ -69,9 +78,9 @@
     a4paper,
     total={210mm,297mm},
     left=30mm,
-    right=25mm,
-    top=25mm,
-    bottom=25mm
+    right=20mm,
+    top=20mm,
+    bottom=20mm
 }
 
 \usepackage[shortlabels]{enumitem}
@@ -92,13 +101,16 @@
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 
+\newcommand{\EmptySection}[1]{\section*{#1} \addcontentsline{toc}{section}{#1}}
+\newcommand{\EmptyChapter}[1]{\chapter*{#1} \addcontentsline{toc}{chapter}{#1}}
+
 % ===================================================
 
 \newcommand{\hsp}{\hspace{20pt}}
 \definecolor{gray75}{gray}{0.75}
 
 \titleformat{\chapter}
-    {\normalfont\fontsize{14}{15}\bfseries}{\thechapter}{1em}{}
+    {\normalfont\fontsize{14}{14}\bfseries}{\thechapter . }{0em}{}
 
 \titlespacing{\chapter}{0pt}{1em}{1em}{}
 \titleclass{\chapter}{straight}
@@ -107,12 +119,16 @@
 \newcommand{\chaptertolists}{}
 
 \titleformat{\section}
-    {\normalfont\fontsize{12}{15}\bfseries}{\thesection}{1em}{}
+    {\normalfont\fontsize{14}{14}\bfseries}{\thesection . }{0em}{}
 
+\titlespacing{\section}{0pt}{1em}{1em}{}
+\titleclass{\section}{straight}
 
 \titleformat{\subsection}
-    {\normalfont\fontsize{10}{15}\bfseries}{\thesubsection}{1em}{}
+    {\normalfont\fontsize{13}{13}\it}{\thesubsection . }{0em}{}
 
+\titlespacing{\subsection}{0pt}{1em}{0.5em}{}
+\titleclass{\subsection}{straight}
 
 % Code higlight in lslisting, IMPORTANT: add 'escapechar=\%' to the properties to use!
 % And then add the command like this to the line you want to highlight: %\Hilight%
