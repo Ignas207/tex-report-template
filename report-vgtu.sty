@@ -62,7 +62,7 @@
 % \renewcommand{\contentsname}{\centering TURINYS}
 \renewcommand{\contentsname}{\hfill \bfseries \FontSize{14} TURINYS \hfill}
 
-\dottedcontents{chapter}[0em]{. }{0.97em}{1pc}
+\dottedcontents{chapter}[0em]{}{0.97em}{1pc}
 \dottedcontents{section}[2em]{}{1.94em}{1pc}
 \dottedcontents{subsection}[4em]{\it}{2.9em}{1pc}
 
@@ -109,8 +109,9 @@
 \newcommand{\hsp}{\hspace{20pt}}
 \definecolor{gray75}{gray}{0.75}
 
+\renewcommand{\thechapter}{\arabic{chapter}. }
 \titleformat{\chapter}
-    {\normalfont\fontsize{14}{14}\bfseries}{\thechapter . }{0em}{}
+    {\normalfont\fontsize{14}{14}\bfseries}{\thechapter}{0em}{}
 
 \titlespacing{\chapter}{0pt}{1em}{1em}{}
 \titleclass{\chapter}{straight}
@@ -118,14 +119,18 @@
 % \newcommand{\chapterbreak}{}
 \newcommand{\chaptertolists}{}
 
+
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}. }
 \titleformat{\section}
-    {\normalfont\fontsize{14}{14}\bfseries}{\thesection . }{0em}{}
+    {\normalfont\fontsize{14}{14}\bfseries}{\thesection}{0em}{}
 
 \titlespacing{\section}{0pt}{1em}{1em}{}
 \titleclass{\section}{straight}
 
+
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}. }
 \titleformat{\subsection}
-    {\normalfont\fontsize{13}{13}\it}{\thesubsection . }{0em}{}
+    {\normalfont\fontsize{13}{13}\it}{\thesubsection}{0em}{}
 
 \titlespacing{\subsection}{0pt}{1em}{0.5em}{}
 \titleclass{\subsection}{straight}
