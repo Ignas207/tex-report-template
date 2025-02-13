@@ -1,50 +1,92 @@
 \documentclass[a4paper,12pt]{report}
-% \usepackage{report-standart}
-% \usepackage{thesis-standart}
 \usepackage{report-vgtu}
 \usepackage{newtxtext,newtxmath}
+\usepackage{chngcntr}
+\usepackage{fancyhdr}
+\counterwithout{equation}{chapter}
 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{\thepage}
 % center the toc heading
-
 \begin{document}
-% \input{title.tex}
-\newcommand{\city}{VILNIUS}
-\newcommand{\courseCode}{Nuotolinis stebėjimas}
-\newcommand{\reportTitle}{Laboratorinis darbas 1}
-\newcommand{\studentName}{Student name}
-% \newcommand{\studentCode}{Student code}
-\newcommand{\Supervisor}{Supervisor}
+\setlist[itemize]{topsep=0pt, parsep=0pt, itemsep=0pt, leftmargin=1.5cm}
+\setlist[enumerate]{topsep=0pt, parsep=0pt, itemsep=0pt, leftmargin=1.5cm}
+
+
+\newcommand{\city}{Vilnius}
+\newcommand{\thesisConsultant}{konsultantas}
+\newcommand{\thesisLTconsultant}{lietuviu konsultantas}
+\newcommand{\ThesisTitleEng}{Thesis ENG title}
+\newcommand{\studentName}{student}
+\newcommand{\ThesisTitle}{THESIS TITLE}
+\newcommand{\Supervisor}{vadovas}
 
 \pagenumbering{arabic}
 \input{report-title.tex}
-% \thispagestyle{empty}
-% \pagenumbering{arabic}
 \newpage
 
-\tableofcontents{}
-% \thispagestyle{empty}
+\input{title2.tex}
+\newpage
+
+\input{./intro-pages/uzduotis.tex}
+\setcounter{page}{3}
+\newpage
+
+\input{./intro-pages/anotacija.tex}
+\newpage
+
+\input{./intro-pages/abstract-en.tex}
+\newpage
+
+% Turinys
+\tableofcontents
+\thispagestyle{fancy}
+\newpage
+
+% Lenteliu sarasas
+\listoftables
+\thispagestyle{fancy}
+\newpage
+
+% Paveikslu sarasas
+\listoffigures
+\thispagestyle{fancy}
+\newpage
+
+% Priedu sarasas
+\listofappendices
+\thispagestyle{fancy}
 \newpage
 
 % Introduction
 \input{introduction/intro.tex}
 \newpage
 
+\input{literaturos-analize/main.tex}
+\newpage
+
 % Experimental part
-\input{experiments/experiments.tex}
+\input{metodologija/method-main.tex}
 \newpage
 
 % Experiment results
-\input{results/exp_results.tex}
+\input{empirinis-tyrimas/tyrimas-main.tex}
 \newpage
 
 % Conclusions
-\input{conclusions/conclusion.tex}
+\input{conclusions/conclusions-main.tex}
 \newpage
 
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{LITERATŪROS SĄRAŠAS}
 \printbibliography[title={LITERATŪROS SĄRAŠAS}]
+\newpage
 
+\input{priedai/priedai.tex}
+\newpage
 
 \end{document}

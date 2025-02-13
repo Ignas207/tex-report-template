@@ -3,24 +3,30 @@
 \usepackage{amsmath} % Advanced math typesetting
 \usepackage[utf8]{inputenc} % Unicode support (Umlauts etc.)
 %\usepackage[ngerman]{babel} % Change hyphenation rules
-\usepackage[colorlinks, citecolor=black, urlcolor=blue, linkcolor=black]{hyperref} % Add a link to your document
+\usepackage[colorlinks, citecolor=black, urlcolor=black, linkcolor=black]{hyperref} % Add a link to your document
 \usepackage{graphicx} % Add pictures to your document
 \usepackage{listings} % Source code formatting and highlighting
 \usepackage{multirow}
 \usepackage{ragged2e}
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\usepackage{appendix}
+\usepackage{tabto}
+\newcommand\mytab{\tabto{1cm}}
 % \usepackage{bookmark}
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage{amssymb}
 \usepackage{sourcecodepro}
 \usepackage{pdfpages}
-\usepackage[outputdir=build]{minted}
+\usepackage{minted}
 \usepackage{colortbl}
 \usepackage{tikz}
-\usepackage{caption}
+\usepackage[skip=10pt]{caption}
 \usepackage{subcaption}
 % \usepackage{svg}
 \usepackage{setspace}
+% \usepackage[showframe]{geometry}
 \usepackage{geometry}
 \usepackage{rotating}
 \usepackage[compact]{titlesec}
@@ -29,7 +35,7 @@
 \usepackage{newfloat}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{pdflscape}
-% \usepackage{tocloft}
+\usepackage{tocloft}
 \usepackage{titletoc}
 % \usepackage{mathptmx}
 % \usepackage[T1]{fontenc}
@@ -37,6 +43,7 @@
 \usepackage{lmodern}
 \usepackage{anyfontsize}
 \usepackage{cleveref}
+\usepackage{bigstrut}
 % \usepackage{helvet}
 % \usepackage{fontspec}
 % \setmainfont[Ligatures=TeX]{Verdana}
@@ -60,20 +67,60 @@
 % \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
 % \renewcommand{\contentsname}{\centering TURINYS}
-\renewcommand{\contentsname}{\hfill \bfseries \FontSize{14} TURINYS \hfill}
 
-\dottedcontents{chapter}[0em]{}{0.97em}{1pc}
-\dottedcontents{section}[2em]{}{1.94em}{1pc}
-\dottedcontents{subsection}[4em]{\it}{2.9em}{1pc}
+% \renewcommand\cftchappagefont{\normalfont}
+\renewcommand{\contentsname}{\vspace*{-3em} \hfill \bfseries \FontSize{14} TURINYS \hfill}
+\renewcommand{\listtablename}{\vspace*{-2.7em} \hfill \bfseries \FontSize{14} LENTELIŲ SĄRAŠAS \hfill}
+\renewcommand{\listfigurename}{\vspace*{-2.7em} \hfill \bfseries \FontSize{14} PAVEIKSLŲ SĄRAŠAS \hfill}
+
+\renewcommand{\figurename}{}
+\renewcommand{\tablename}{}
+
+\newcommand{\figSource}[1]{{\vspace*{-2em} \raggedleft \FontSize{10} Šaltinis: #1}}
+\newcommand{\figSourceEx}[2]{{\vspace{#2} \raggedleft \FontSize{10} Šaltinis: #1}}
+
+% \renewcommand\cftchapafterpnum{\vskip6pt}
+% \renewcommand\cftsecafterpnum{\vskip6pt}
+\dottedcontents{table}[0em]{lentelė. }{4em}{4pt}
+\dottedcontents{figure}[0em]{pav. }{2.7em}{3.5pt}
+\dottedcontents{chapter}[0em]{}{1em}{4pt}
+\dottedcontents{section}[1em]{}{1.97em}{4pt}
+\dottedcontents{subsection}[3.5em]{\it}{2.7em}{4pt}
+\dottedcontents{appendices}[0em]{\it}{1em}{1em}
 
 \providecommand*{\listingautorefname}{Listing}
 \providecommand*{\listingname}{Listing}
 
-\providecommand{\uniLogo}{dependancies/Agai_melynas.png}
+\providecommand{\uniLogo}{dependancies/Picture1.png}
+
+
+% Apendices===========================
+
+% Define a new list for appendices
+\newcommand{\listappendicesname}{\vspace*{-2.7em} \hfill \FontSize{14} PRIEDAI \hfill}
+\newlistof{appendices}{apc}{\listappendicesname}
+
+
+% Define the dotted contents for appendices
+\newcommand{\dottedcontentsappendices}[1]{
+    \addtocontents{apc}{\protect\contentsline{appendices}{#1}{\thepage}}
+    % \setlength{\cftdotsep}{5pt}
+}
+
+\newcommand{\newappendix}[1]{
+    \refstepcounter{appendices}
+    \addcontentsline{apc}{appendices}{\theappendices \ priedas. #1}
+    {\vspace*{5pt} \protect\bf \theappendices \ \vspace*{-5pt} priedas.} #1
+}
+
+
+% =========================
+
+
 
 % \usepackage{pst-node, pst-plot, auto-pst-pdf}
 % \usepackage{tikz}
-\setstretch{1.25}
+\setstretch{1.5}
 \geometry{
     a4paper,
     total={210mm,297mm},
@@ -87,13 +134,24 @@
 \setlist[itemize]{topsep=0pt}
 \setlist[enumerate]{topsep=0pt}
 
-\DeclareCaptionFormat{mListing}{#1. #3}
+\DeclareCaptionFormat{mListing}{\textbf{#1 pav.} #3}
 
 \setlength{\parindent}{0cm}
 \captionsetup{labelsep=space,
-    justification=raggedright,
+    % topmargin=1em,
+    % margin = top 1 em,
+    justification=centering,
     singlelinecheck=off,
     format=mListing
+}
+
+\DeclareCaptionFormat{mFig}{\textbf{#1 lentelė.} #3}
+
+\captionsetup[table]{position=top,
+    justification=raggedright,
+    singlelinecheck=off,
+    labelfont=bf,
+    format=mFig,
 }
 
 \usepackage{chngcntr}
@@ -101,8 +159,8 @@
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 
-\newcommand{\EmptySection}[1]{\section*{#1} \addcontentsline{toc}{section}{#1}}
-\newcommand{\EmptyChapter}[1]{\chapter*{#1} \addcontentsline{toc}{chapter}{#1}}
+\newcommand{\EmptySection}[1]{\section*{#1} \phantomsection\addcontentsline{toc}{section}{#1}}
+\newcommand{\EmptyChapter}[1]{\chapter*{#1} \phantomsection\addcontentsline{toc}{chapter}{#1}}
 
 % ===================================================
 
@@ -156,10 +214,12 @@
 
 \usepackage[
 backend=biber,
-style=ieee,
+style=apa,
 sorting=none
 ]{biblatex}
 \addbibresource{refferences.bib}
+\addbibresource{library.bib}
+% \addbibresource{library.bib}
 % \addbibresource{./chapter1/chap1-ref.bib}
 % \addbibresource{./ideas-chapter/ideas-ref.bib}
 
